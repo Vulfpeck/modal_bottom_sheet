@@ -10,9 +10,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
-import 'package:modal_bottom_sheet/src/utils/primary_scroll_status_bar.dart';
-
 import 'package:modal_bottom_sheet/src/utils/bottom_sheet_suspended_curve.dart';
+import 'package:modal_bottom_sheet/src/utils/primary_scroll_status_bar.dart';
 
 const Curve _decelerateEasing = Cubic(0.0, 0.0, 0.2, 1.0);
 const Curve _modalBottomSheetCurve = _decelerateEasing;
@@ -332,7 +331,8 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
   Widget build(BuildContext context) {
     final bounceAnimation = CurvedAnimation(
       parent: _bounceDragController,
-      curve: Curves.easeOutSine,
+      curve: Curves.linearToEaseOut,
+      reverseCurve: Curves.easeInToLinear,
     );
 
     var child = widget.builder(context, _scrollController);

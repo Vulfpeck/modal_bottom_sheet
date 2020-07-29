@@ -218,6 +218,7 @@ class _CupertinoModalTransition extends StatelessWidget {
   final Animation<double> secondaryAnimation;
   final Radius topRadius;
   final Curve animationCurve;
+  final Curve reverseAnimationCurve;
   final Color backgroundColor;
 
   final Widget body;
@@ -229,6 +230,7 @@ class _CupertinoModalTransition extends StatelessWidget {
     @required this.topRadius,
     this.backgroundColor = Colors.black,
     this.animationCurve,
+    this.reverseAnimationCurve,
   }) : super(key: key);
 
   @override
@@ -242,7 +244,8 @@ class _CupertinoModalTransition extends StatelessWidget {
 
     final curvedAnimation = CurvedAnimation(
       parent: secondaryAnimation,
-      curve: animationCurve ?? Curves.easeOut,
+      curve: animationCurve ?? Curves.linearToEaseOut,
+      reverseCurve: reverseAnimationCurve ?? Curves.easeInToLinear,
     );
 
     return AnnotatedRegion<SystemUiOverlayStyle>(

@@ -124,6 +124,7 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
     @required this.expanded,
     this.bounce = false,
     this.animationCurve,
+    this.reverseAnimationCurve,
     this.duration,
     RouteSettings settings,
   })  : assert(expanded != null),
@@ -144,7 +145,7 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
 
   final AnimationController secondAnimationController;
   final Curve animationCurve;
-
+  final Curve reverseAnimationCurve;
   @override
   Duration get transitionDuration => duration ?? _bottomSheetDuration;
 

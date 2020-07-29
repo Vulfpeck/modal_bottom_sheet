@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'dart:async';
 
 /// Shows a modal material design bottom sheet.
 Future<T> showMaterialModalBottomSheet<T>({
@@ -15,6 +16,7 @@ Future<T> showMaterialModalBottomSheet<T>({
   bool expand = false,
   AnimationController secondAnimation,
   Curve animationCurve,
+  Curve reverseAnimationCurve,
   bool useRootNavigator = false,
   bool isDismissible = true,
   bool enableDrag = true,
