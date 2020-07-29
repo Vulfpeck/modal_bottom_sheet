@@ -30,11 +30,7 @@ class MaterialWithModalsPageRoute<T> extends MaterialPageRoute<T> {
   @override
   bool canTransitionTo(TransitionRoute<dynamic> nextRoute) {
     // Don't perform outgoing animation if the next route is a fullscreen dialog.
-    return (nextRoute is MaterialPageRoute && !nextRoute.fullscreenDialog) ||
-        (nextRoute is CupertinoPageRoute && !nextRoute.fullscreenDialog) ||
-        (nextRoute is MaterialWithModalsPageRoute &&
-            !nextRoute.fullscreenDialog) ||
-        (nextRoute is ModalBottomSheetRoute);
+    return true;
   }
 
   @override
