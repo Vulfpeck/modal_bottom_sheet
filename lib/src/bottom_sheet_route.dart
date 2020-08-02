@@ -84,29 +84,30 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
           namesRoute: true,
           label: _getRouteLabel(),
           explicitChildNodes: true,
-          child: ModalBottomSheet(
-            expanded: widget.route.expanded,
-            containerBuilder: widget.route.containerBuilder,
-            animationController: widget.route._animationController,
-            shouldClose: widget.route._hasScopedWillPopCallback
-                ? () async {
-                    final willPop = await widget.route.willPop();
-                    return willPop != RoutePopDisposition.doNotPop;
-                  }
-                : null,
-            onClosing: () {
-              if (widget.route.isCurrent) {
-                Navigator.of(context).pop();
-              }
-            },
-            builder: widget.route.builder,
-            enableDrag: widget.enableDrag,
-            bounce: widget.bounce,
-            scrollController: widget.scrollController,
-            animationCurve: widget.animationCurve,
-          ),
+          child: child,
         );
       },
+      child: ModalBottomSheet(
+        expanded: widget.route.expanded,
+        containerBuilder: widget.route.containerBuilder,
+        animationController: widget.route._animationController,
+        shouldClose: widget.route._hasScopedWillPopCallback
+            ? () async {
+                final willPop = await widget.route.willPop();
+                return willPop != RoutePopDisposition.doNotPop;
+              }
+            : null,
+        onClosing: () {
+          if (widget.route.isCurrent) {
+            Navigator.of(context).pop();
+          }
+        },
+        builder: widget.route.builder,
+        enableDrag: widget.enableDrag,
+        bounce: widget.bounce,
+        scrollController: widget.scrollController,
+        animationCurve: widget.animationCurve,
+      ),
     );
   }
 }
